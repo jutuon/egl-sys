@@ -8,7 +8,7 @@ Binding generation is done with [gl_generator](https://github.com/brendanzab/gl-
 
 ## Generated bindings
 
-Bindings will be created to module named `egl`. By default bindings
+Bindings will be created to module named `ffi`. By default bindings
 in this module are for EGL 1.4 and require dynamic linking to EGL library. You can
 change bindings in this module to use function pointer loading instead
 of dynamic linking. That disables dynamic linking to EGL library.
@@ -34,7 +34,7 @@ Disables dynamic linking to EGL library.
 
 ### `EGL_version_*`
 
-EGL version for bindings in module `egl`.
+EGL version for bindings in module `ffi`.
 
 ### `extensions_module`
 

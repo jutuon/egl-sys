@@ -34,7 +34,7 @@ pub(crate) mod platform_types {
 }
 
 
-pub mod egl {
+pub mod ffi {
     pub use platform_types::*;
 
     include!(concat!(env!("OUT_DIR"), "/egl_generated_bindings.rs"));
