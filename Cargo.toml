@@ -2,7 +2,7 @@
 name = "egl-sys"
 version = "0.1.0"
 authors = ["Juuso Tuononen <jutuon@outlook.com>"]
-licence = "Apache-2.0/MIT"
+license = "Apache-2.0/MIT"
 
 [dependencies]
 
