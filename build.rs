@@ -187,7 +187,7 @@ fn main() {
     );
 
     if extension_strings.len() > 0 || cfg!(feature = "extensions_module") {
-        println!("rustc-cfg=extensions_module");
+        println!("cargo:rustc-cfg=feature=\"extensions_module\"");
 
         let file_path = Path::new(&out_dir).join("egl_generated_extension_bindings.rs");
         generate_bindings(file_path, LATEST_EGL_VERSION, GlobalGenerator, extension_strings);
