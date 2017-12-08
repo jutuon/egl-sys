@@ -12,7 +12,7 @@ const FILE_BEGINNING_TEXT: &'static [u8] = b"//
 //
 //
 
-pub use platform_types::*;
+pub(crate) use platform_types::*;
 
 ";
 
