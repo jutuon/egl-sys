@@ -17,6 +17,8 @@ default = ["EGL_version_1_4"]
 
 # See README.md for explanations about these features.
 
+racer_autocomplete_workaround = []
+
 function_pointer_loading = []
 
 EGL_version_1_4 = []

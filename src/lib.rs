@@ -35,15 +35,26 @@ pub(crate) mod platform_types {
 
 
 pub mod ffi {
-    pub use platform_types::*;
-
+    #[cfg(not(feature = "racer_autocomplete_workaround"))]
     include!(concat!(env!("OUT_DIR"), "/egl_generated_bindings.rs"));
+
+    #[cfg(feature = "racer_autocomplete_workaround")]
+    pub use egl_generated_bindings::*;
 }
 
 
 #[cfg(feature = "extensions_module")]
 pub mod extensions {
-    pub use platform_types::*;
-
+    #[cfg(not(feature = "racer_autocomplete_workaround"))]
     include!(concat!(env!("OUT_DIR"), "/egl_generated_extension_bindings.rs"));
+
+    #[cfg(feature = "racer_autocomplete_workaround")]
+    pub use egl_generated_extension_bindings::*;
 }
+
+
+#[cfg(feature = "racer_autocomplete_workaround")]
+mod egl_generated_bindings;
+
+#[cfg(all(feature = "racer_autocomplete_workaround", feature = "extensions_module"))]
+mod egl_generated_extension_bindings;

@@ -1,3 +1,7 @@
 /target/
 **/*.rs.bk
 Cargo.lock
+
+
+egl_generated_bindings.rs
+egl_generated_extension_bindings.rs
