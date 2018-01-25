@@ -10,7 +10,7 @@ license = "Apache-2.0/MIT"
 x11 = "2.17"
 
 [build-dependencies]
-gl_generator = "0.7.0"
+gl_generator = "0.8.0"
 
 [features]
 default = ["EGL_version_1_4"]
