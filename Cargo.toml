@@ -26,6 +26,8 @@ EGL_version_1_5 = []
 
 extensions_module = []
 
+raspberry_pi_broadcom = []
+
 # This list of extensions is from Khronos website.
 # https://www.khronos.org/registry/EGL/
 

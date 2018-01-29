@@ -41,6 +41,10 @@ EGL version for bindings in module `ffi`.
 Enable `extensions` module even if there is not
 any extensions selected.
 
+### `raspberry_pi_broadcom`
+
+Sets EGL native types to match Raspberry Pi Broadcom EGL implementation.
+
 ### EGL extensions
 
 EGL extension names are crate features. Selecting any extensions

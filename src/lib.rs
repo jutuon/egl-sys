@@ -1,5 +1,5 @@
 
-#[cfg(unix)]
+#[cfg(all(unix, not(feature = "raspberry_pi_broadcom")))]
 extern crate x11;
 
 #[cfg_attr(not(feature = "function_pointer_loading"), link(name="EGL"))]
@@ -22,7 +22,7 @@ pub(crate) mod platform_types {
     pub type NativeWindowType = EGLNativeWindowType;
 
 
-    #[cfg(unix)]
+    #[cfg(all(unix, not(feature = "raspberry_pi_broadcom")))]
     pub mod display_pixmap_window {
         use x11;
 
@@ -31,6 +31,16 @@ pub(crate) mod platform_types {
         pub type EGLNativeWindowType = x11::xlib::Window;
     }
 
+    #[cfg(all(unix, feature = "raspberry_pi_broadcom"))]
+    pub mod display_pixmap_window {
+        use std::os::raw::c_void;
+
+        // https://github.com/raspberrypi/firmware/blob/master/hardfp/opt/vc/include/EGL/eglplatform.h
+
+        pub type EGLNativeDisplayType = *mut c_void;
+        pub type EGLNativePixmapType = *mut c_void;
+        pub type EGLNativeWindowType = *mut c_void;
+    }
 }
 
 
