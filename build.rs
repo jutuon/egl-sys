@@ -1,6 +1,6 @@
 extern crate gl_generator;
 
-use gl_generator::{Registry, Api, Profile, Fallbacks, StaticGenerator, StructGenerator, Generator};
+use gl_generator::{Registry, Api, Profile, Fallbacks, Generator};
 use std::env;
 use std::fs::File;
 use std::path::{Path};
@@ -52,10 +52,10 @@ fn main() {
     file_path.push("egl_generated_bindings.rs");
 
     #[cfg(feature = "function_pointer_loading")]
-    generate_bindings(&file_path, EGL_VERSION, StructGenerator, &[]);
+    generate_bindings(&file_path, EGL_VERSION, gl_generator::StructGenerator, &[]);
 
     #[cfg(not(feature = "function_pointer_loading"))]
-    generate_bindings(&file_path, EGL_VERSION, StaticGenerator, &[]);
+    generate_bindings(&file_path, EGL_VERSION, gl_generator::StaticGenerator, &[]);
 
 
     // Following extension list is from
@@ -199,7 +199,7 @@ fn main() {
         println!("cargo:rustc-cfg=feature=\"extensions_module\"");
 
         file_path.set_file_name("egl_generated_extension_bindings.rs");
-        generate_bindings(&file_path, LATEST_EGL_VERSION, StructGenerator, extension_strings);
+        generate_bindings(&file_path, LATEST_EGL_VERSION, gl_generator::StructGenerator, extension_strings);
     }
 }
 
