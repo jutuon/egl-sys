@@ -2,7 +2,11 @@
 #[cfg(all(unix, not(feature = "raspberry-pi-broadcom")))]
 extern crate x11;
 
-#[cfg_attr(not(feature = "function-pointer-loading"), link(name="EGL"))]
+// Normal EGL linking
+#[cfg_attr(all(not(feature = "function-pointer-loading"), not(feature = "raspberry-pi-broadcom")), link(name="EGL"))]
+// Raspberry Pi broadcom EGL linking
+#[cfg_attr(all(not(feature = "function-pointer-loading"), feature = "raspberry-pi-broadcom"), link(name="brcmEGL"))]
+#[cfg_attr(all(not(feature = "function-pointer-loading"), feature = "raspberry-pi-broadcom"), link(name="brcmGLESv2"))]
 extern {}
 
 pub(crate) mod platform_types {
