@@ -14,9 +14,6 @@ const FILE_BEGINNING_TEXT: &'static [u8] = b"//
 
 pub(crate) use platform_types::*;
 
-pub const EGL_FALSE: self::types::EGLBoolean = 0;
-pub const EGL_TRUE: self::types::EGLBoolean = 1;
-
 ";
 
 #[cfg(feature = "EGL_version_1_4")]
