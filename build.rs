@@ -16,10 +16,10 @@ pub(crate) use platform_types::*;
 
 ";
 
-#[cfg(feature = "EGL_version_1_4")]
+#[cfg(feature = "EGL-version-1-4")]
 const EGL_VERSION: (u8, u8) = (1, 4);
 
-#[cfg(feature = "EGL_version_1_5")]
+#[cfg(feature = "EGL-version-1-5")]
 const EGL_VERSION: (u8, u8) = (1, 5);
 
 
@@ -41,7 +41,7 @@ macro_rules! extensions {
 }
 
 fn main() {
-    let mut file_path = if cfg!(feature = "racer_autocomplete_workaround") {
+    let mut file_path = if cfg!(feature = "racer-autocomplete-workaround") {
         let working_dir = env::current_dir().unwrap();
         Path::new(&working_dir).join("src")
     } else {
@@ -51,10 +51,10 @@ fn main() {
 
     file_path.push("egl_generated_bindings.rs");
 
-    #[cfg(feature = "function_pointer_loading")]
+    #[cfg(feature = "function-pointer-loading")]
     generate_bindings(&file_path, EGL_VERSION, gl_generator::StructGenerator, &[]);
 
-    #[cfg(not(feature = "function_pointer_loading"))]
+    #[cfg(not(feature = "function-pointer-loading"))]
     generate_bindings(&file_path, EGL_VERSION, gl_generator::StaticGenerator, &[]);
 
 
@@ -195,8 +195,8 @@ fn main() {
         "EGL_NV_context_priority_realtime"
     );
 
-    if extension_strings.len() > 0 || cfg!(feature = "extensions_module") {
-        println!("cargo:rustc-cfg=feature=\"extensions_module\"");
+    if extension_strings.len() > 0 || cfg!(feature = "extensions-module") {
+        println!("cargo:rustc-cfg=feature=\"extensions-module\"");
 
         file_path.set_file_name("egl_generated_extension_bindings.rs");
         generate_bindings(&file_path, LATEST_EGL_VERSION, gl_generator::StructGenerator, extension_strings);

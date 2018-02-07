@@ -13,20 +13,20 @@ x11 = "2.17"
 gl_generator = "0.9.0"
 
 [features]
-default = ["EGL_version_1_4"]
+default = ["EGL-version-1-4"]
 
 # See README.md for explanations about these features.
 
-racer_autocomplete_workaround = []
+racer-autocomplete-workaround = []
 
-function_pointer_loading = []
+function-pointer-loading = []
 
-EGL_version_1_4 = []
-EGL_version_1_5 = []
+EGL-version-1-4 = []
+EGL-version-1-5 = []
 
-extensions_module = []
+extensions-module = []
 
-raspberry_pi_broadcom = []
+raspberry-pi-broadcom = []
 
 # This list of extensions is from Khronos website.
 # https://www.khronos.org/registry/EGL/

@@ -27,21 +27,21 @@ loading.
 
 ## Crate features
 
-### `function_pointer_loading`
+### `function-pointer-loading`
 
 Generate bindings which require function pointer loading.
 Disables dynamic linking to EGL library.
 
-### `EGL_version_*`
+### `EGL-version-*`
 
 EGL version for bindings in module `ffi`.
 
-### `extensions_module`
+### `extensions-module`
 
 Enable `extensions` module even if there is not
 any extensions selected.
 
-### `raspberry_pi_broadcom`
+### `raspberry-pi-broadcom`
 
 Sets EGL native types to match Raspberry Pi Broadcom EGL implementation.
 

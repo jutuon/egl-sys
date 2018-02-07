@@ -1,8 +1,8 @@
 
-#[cfg(all(unix, not(feature = "raspberry_pi_broadcom")))]
+#[cfg(all(unix, not(feature = "raspberry-pi-broadcom")))]
 extern crate x11;
 
-#[cfg_attr(not(feature = "function_pointer_loading"), link(name="EGL"))]
+#[cfg_attr(not(feature = "function-pointer-loading"), link(name="EGL"))]
 extern {}
 
 pub(crate) mod platform_types {
@@ -22,7 +22,7 @@ pub(crate) mod platform_types {
     pub type NativeWindowType = EGLNativeWindowType;
 
 
-    #[cfg(all(unix, not(feature = "raspberry_pi_broadcom")))]
+    #[cfg(all(unix, not(feature = "raspberry-pi-broadcom")))]
     pub mod display_pixmap_window {
         use x11;
 
@@ -31,7 +31,7 @@ pub(crate) mod platform_types {
         pub type EGLNativeWindowType = x11::xlib::Window;
     }
 
-    #[cfg(all(unix, feature = "raspberry_pi_broadcom"))]
+    #[cfg(all(unix, feature = "raspberry-pi-broadcom"))]
     pub mod display_pixmap_window {
         use std::os::raw::c_void;
 
@@ -45,26 +45,26 @@ pub(crate) mod platform_types {
 
 
 pub mod ffi {
-    #[cfg(not(feature = "racer_autocomplete_workaround"))]
+    #[cfg(not(feature = "racer-autocomplete-workaround"))]
     include!(concat!(env!("OUT_DIR"), "/egl_generated_bindings.rs"));
 
-    #[cfg(feature = "racer_autocomplete_workaround")]
+    #[cfg(feature = "racer-autocomplete-workaround")]
     pub use egl_generated_bindings::*;
 }
 
 
-#[cfg(feature = "extensions_module")]
+#[cfg(feature = "extensions-module")]
 pub mod extensions {
-    #[cfg(not(feature = "racer_autocomplete_workaround"))]
+    #[cfg(not(feature = "racer-autocomplete-workaround"))]
     include!(concat!(env!("OUT_DIR"), "/egl_generated_extension_bindings.rs"));
 
-    #[cfg(feature = "racer_autocomplete_workaround")]
+    #[cfg(feature = "racer-autocomplete-workaround")]
     pub use egl_generated_extension_bindings::*;
 }
 
 
-#[cfg(feature = "racer_autocomplete_workaround")]
+#[cfg(feature = "racer-autocomplete-workaround")]
 mod egl_generated_bindings;
 
-#[cfg(all(feature = "racer_autocomplete_workaround", feature = "extensions_module"))]
+#[cfg(all(feature = "racer-autocomplete-workaround", feature = "extensions-module"))]
 mod egl_generated_extension_bindings;
